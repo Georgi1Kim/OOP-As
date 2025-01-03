@@ -1,22 +1,16 @@
-public class Artist {
-    private String name;
-    private int age;
+public class Artist extends Person {
+    private String style;
 
-    public Artist(String name, int age) {
-        this.name = name;
-        this.age = age;
+    public Artist(String name, int age, String style) {
+        super(name, age);
+        this.style = style;
     }
 
-    // Getters and Setters
-    public String getName() {
-        return name;
+    public String getStyle() {
+        return style;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void display() {
-        System.out.println("Artist: " + name + ", Age: " + age);
+    public String toString() {
+        return super.toString() + ", Style: " + style;
     }
 }

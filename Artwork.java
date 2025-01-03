@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Artwork {
     private String title;
     private String medium;
@@ -11,27 +13,33 @@ public class Artwork {
         this.price = price;
     }
 
-    // Getters and Setters
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public int getYear() {
+        return year;
     }
 
     public double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    @Override
+    public String toString() {
+        return "Artwork: " + title + ", Medium: " + medium + ", Year: " + year + ", Price: $" + price;
     }
 
-    public void display() {
-        System.out.println("Artwork: " + title + ", Medium: " + medium + ", Year: " + year + ", Price: $" + price);
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Artwork artwork = (Artwork) obj;
+        return year == artwork.year && Double.compare(artwork.price, price) == 0 && title.equals(artwork.title);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, year, price);
     }
 }
-
-
-
